@@ -30,7 +30,7 @@ const openAIController = asyncHandler(async (req, res) => {
     });
     // push the content into the user
     const userFound = await User.findById(req.user._id);
-    userFound.history.push(newContent._id);
+    userFound.contentHistory.push(newContent._id);
     // increment api request count
     userFound.apiRequestCount += 1;
     await userFound.save();

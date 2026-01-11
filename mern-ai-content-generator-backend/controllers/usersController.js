@@ -89,7 +89,7 @@ const userProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id)
     .select("-password")
     .populate("payments")
-    .populate("history");
+    .populate("contentHistory");
   if (user) {
     res.status(200).json({
       message: "User profile fetched successfully",

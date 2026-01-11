@@ -3,6 +3,7 @@ const cookieParser = require("cookie-parser");
 const express = require("express");
 const usersRouter = require("./routes/usersRouter");
 const cron = require("node-cron");
+const cors = require("cors");
 require("./utils/connectDB")();
 const { errorHandler } = require("./middlewares/errorMiddleware");
 const openAIRouter = require("./routes/openAIRouter");
@@ -101,6 +102,11 @@ cron.schedule("0 0 1 * *", async () => {
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
+const corsOptions = {
+  origin: "http://localhost:3000",
+  credentials: true,
+};
+app.use(cors(corsOptions));
 
 // Routes
 app.use("/api/v1/users", usersRouter);
