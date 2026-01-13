@@ -103,7 +103,17 @@ cron.schedule("0 0 1 * *", async () => {
 app.use(express.json());
 app.use(cookieParser());
 const corsOptions = {
-  origin: ["http://localhost:3000", "https://mern-ai-content-generator-rho.vercel.app"],
+  origin: (origin, callback) => {
+    if (
+      !origin ||
+      origin === "http://localhost:3000" ||
+      /^https:\/\/.*\.vercel\.app$/.test(origin)
+    ) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true,
 };
 app.use(cors(corsOptions));
