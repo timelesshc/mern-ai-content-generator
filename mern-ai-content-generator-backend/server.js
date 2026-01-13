@@ -100,8 +100,6 @@ cron.schedule("0 0 1 * *", async () => {
 });
 
 // Middleware
-app.use(express.json());
-app.use(cookieParser());
 const corsOptions = {
   origin: (origin, callback) => {
     if (
@@ -111,12 +109,17 @@ const corsOptions = {
     ) {
       callback(null, true);
     } else {
+      console.log("Blocked by CORS:", origin);
       callback(new Error("Not allowed by CORS"));
     }
   },
   credentials: true,
+  optionsSuccessStatus: 200,
 };
+
 app.use(cors(corsOptions));
+app.use(express.json());
+app.use(cookieParser());
 
 // Routes
 app.use("/api/v1/users", usersRouter);
