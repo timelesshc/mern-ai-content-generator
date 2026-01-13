@@ -2,6 +2,8 @@
 
 A full-stack AI-powered content generation application built with the MERN stack (MongoDB, Express, React, Node.js). ContentFlow AI uses OpenAI's GPT models to help users generate high-quality content for blogs, marketing copy, and creative writing.
 
+**Live Demo:** [https://mern-ai-content-generator-rho.vercel.app/](https://mern-ai-content-generator-rho.vercel.app/)
+
 ## 🚀 Features
 
 - **AI-Powered Content Generation**: Generate engaging content using OpenAI's advanced language models
