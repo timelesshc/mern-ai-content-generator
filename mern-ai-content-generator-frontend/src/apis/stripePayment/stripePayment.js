@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000/api/v1/stripe";
+const BASE_URL = process.env.REACT_APP_BASE_URL + "/api/v1/stripe";
 //=======Stripe Payment=====
 
 export const handleFreeSubscriptionAPI = async () => {
