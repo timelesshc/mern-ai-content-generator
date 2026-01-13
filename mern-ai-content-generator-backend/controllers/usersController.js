@@ -69,6 +69,13 @@ const login = asyncHandler(async (req, res) => {
     maxAge: 1 * 24 * 60 * 60 * 1000, // 1 day
   });
   // send the response
+  res.cookie("token", token, {
+    httpOnly: true,
+    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+    secure: process.env.NODE_ENV === "production", // true in production
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", // Strict for local, None for cross-site (Render -> Vercel)
+  });
+  
   res.json({
     message: "User logged in successfully",
     status: "success",
