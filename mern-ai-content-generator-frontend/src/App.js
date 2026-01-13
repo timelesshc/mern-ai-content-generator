@@ -1,4 +1,3 @@
-require("dotenv").config();
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Registration from "./components/Users/Register";
 import Login from "./components/Users/Login";
